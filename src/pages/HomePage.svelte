@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { Link } from "svelte-navigator";
     import manifest_json from "../map-manifest.json"
     let mapNames = Object.keys(manifest_json);
     
@@ -20,9 +21,9 @@
             alt={map}
             class="map-button-size mx-auto rounded-xl shadow-inner hover:opacity-50 mt-1"
         >
-            <a href={`/${map}`}>
+            <Link to={`/${map}`}>
                 <div class="w-full h-full"></div>
-            </a>
+            </Link>
         </div>
     {/each}
 </div>
