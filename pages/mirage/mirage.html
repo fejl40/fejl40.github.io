@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mirage smokes</title>
+<style>
+            .CT_Tetris {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/CT_Tetris.jpg") no-repeat;
+            display: inline-block;
+        }
+        .CT_Tetris:hover {
+            background: url("../../maps/mirage/CT_Tetris_2.jpg") no-repeat;
+        }
+        
+
+        .B_window {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/B_window.jpg") no-repeat;
+            display: inline-block;
+        }
+        .B_window:hover {
+            background: url("../../maps/mirage/B_window_2.jpg") no-repeat;
+        }
+        
+
+        .b_retake_bench {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/b_retake_bench.jpg") no-repeat;
+            display: inline-block;
+        }
+        .b_retake_bench:hover {
+            background: url("../../maps/mirage/b_retake_bench_2.jpg") no-repeat;
+        }
+        
+
+        .B_window {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/B_window.jpg") no-repeat;
+            display: inline-block;
+        }
+        .B_window:hover {
+            background: url("../../maps/mirage/B_window_2.jpg") no-repeat;
+        }
+        
+
+        .shadow_palace {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/shadow_palace.jpg") no-repeat;
+            display: inline-block;
+        }
+        .shadow_palace:hover {
+            background: url("../../maps/mirage/shadow_palace_2.jpg") no-repeat;
+        }
+        
+
+        .T_short {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/T_short.jpg") no-repeat;
+            display: inline-block;
+        }
+        .T_short:hover {
+            background: url("../../maps/mirage/T_short_2.jpg") no-repeat;
+        }
+        
+
+        .CT_ramp {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/CT_ramp.jpg") no-repeat;
+            display: inline-block;
+        }
+        .CT_ramp:hover {
+            background: url("../../maps/mirage/CT_ramp_2.jpg") no-repeat;
+        }
+        
+
+        .CT {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/CT.jpg") no-repeat;
+            display: inline-block;
+        }
+        .CT:hover {
+            background: url("../../maps/mirage/CT_2.jpg") no-repeat;
+        }
+        
+
+        .T_window {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/T_window.jpg") no-repeat;
+            display: inline-block;
+        }
+        .T_window:hover {
+            background: url("../../maps/mirage/T_window_2.jpg") no-repeat;
+        }
+        
+
+        .CT_ramp {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/CT_ramp.jpg") no-repeat;
+            display: inline-block;
+        }
+        .CT_ramp:hover {
+            background: url("../../maps/mirage/CT_ramp_2.jpg") no-repeat;
+        }
+        
+
+        .a_retake_palace {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/a_retake_palace.jpg") no-repeat;
+            display: inline-block;
+        }
+        .a_retake_palace:hover {
+            background: url("../../maps/mirage/a_retake_palace_2.jpg") no-repeat;
+        }
+        
+
+        .door {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/door.jpg") no-repeat;
+            display: inline-block;
+        }
+        .door:hover {
+            background: url("../../maps/mirage/door_2.jpg") no-repeat;
+        }
+        
+
+        .b_retake_short {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/b_retake_short.jpg") no-repeat;
+            display: inline-block;
+        }
+        .b_retake_short:hover {
+            background: url("../../maps/mirage/b_retake_short_2.jpg") no-repeat;
+        }
+        
+
+        .bench {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/bench.jpg") no-repeat;
+            display: inline-block;
+        }
+        .bench:hover {
+            background: url("../../maps/mirage/bench_2.jpg") no-repeat;
+        }
+        
+
+        .jungle {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/jungle.jpg") no-repeat;
+            display: inline-block;
+        }
+        .jungle:hover {
+            background: url("../../maps/mirage/jungle_2.jpg") no-repeat;
+        }
+        
+
+        .shadow_palace {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/shadow_palace.jpg") no-repeat;
+            display: inline-block;
+        }
+        .shadow_palace:hover {
+            background: url("../../maps/mirage/shadow_palace_2.jpg") no-repeat;
+        }
+        
+
+        .b_retake_bench {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/b_retake_bench.jpg") no-repeat;
+            display: inline-block;
+        }
+        .b_retake_bench:hover {
+            background: url("../../maps/mirage/b_retake_bench_2.jpg") no-repeat;
+        }
+        
+
+        .a_retake_palace {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/a_retake_palace.jpg") no-repeat;
+            display: inline-block;
+        }
+        .a_retake_palace:hover {
+            background: url("../../maps/mirage/a_retake_palace_2.jpg") no-repeat;
+        }
+        
+
+        .b_retake_short {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/b_retake_short.jpg") no-repeat;
+            display: inline-block;
+        }
+        .b_retake_short:hover {
+            background: url("../../maps/mirage/b_retake_short_2.jpg") no-repeat;
+        }
+        
+
+        .stairs_low {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/stairs_low.jpg") no-repeat;
+            display: inline-block;
+        }
+        .stairs_low:hover {
+            background: url("../../maps/mirage/stairs_low_2.jpg") no-repeat;
+        }
+        
+
+        .bench {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/bench.jpg") no-repeat;
+            display: inline-block;
+        }
+        .bench:hover {
+            background: url("../../maps/mirage/bench_2.jpg") no-repeat;
+        }
+        
+
+        .CT_Tetris {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/CT_Tetris.jpg") no-repeat;
+            display: inline-block;
+        }
+        .CT_Tetris:hover {
+            background: url("../../maps/mirage/CT_Tetris_2.jpg") no-repeat;
+        }
+        
+
+        .a_retake_ramp {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/a_retake_ramp.jpg") no-repeat;
+            display: inline-block;
+        }
+        .a_retake_ramp:hover {
+            background: url("../../maps/mirage/a_retake_ramp_2.jpg") no-repeat;
+        }
+        
+
+        .T_short {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/T_short.jpg") no-repeat;
+            display: inline-block;
+        }
+        .T_short:hover {
+            background: url("../../maps/mirage/T_short_2.jpg") no-repeat;
+        }
+        
+
+        .jungle {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/jungle.jpg") no-repeat;
+            display: inline-block;
+        }
+        .jungle:hover {
+            background: url("../../maps/mirage/jungle_2.jpg") no-repeat;
+        }
+        
+
+        .left_arch {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/left_arch.jpg") no-repeat;
+            display: inline-block;
+        }
+        .left_arch:hover {
+            background: url("../../maps/mirage/left_arch_2.jpg") no-repeat;
+        }
+        
+
+        .mid_window {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/mid_window.jpg") no-repeat;
+            display: inline-block;
+        }
+        .mid_window:hover {
+            background: url("../../maps/mirage/mid_window_2.jpg") no-repeat;
+        }
+        
+
+        .stairs_low {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/stairs_low.jpg") no-repeat;
+            display: inline-block;
+        }
+        .stairs_low:hover {
+            background: url("../../maps/mirage/stairs_low_2.jpg") no-repeat;
+        }
+        
+
+        .door {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/door.jpg") no-repeat;
+            display: inline-block;
+        }
+        .door:hover {
+            background: url("../../maps/mirage/door_2.jpg") no-repeat;
+        }
+        
+
+        .T_window {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/T_window.jpg") no-repeat;
+            display: inline-block;
+        }
+        .T_window:hover {
+            background: url("../../maps/mirage/T_window_2.jpg") no-repeat;
+        }
+        
+
+        .mid_short {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/mid_short.jpg") no-repeat;
+            display: inline-block;
+        }
+        .mid_short:hover {
+            background: url("../../maps/mirage/mid_short_2.jpg") no-repeat;
+        }
+        
+
+        .stairs {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/stairs.jpg") no-repeat;
+            display: inline-block;
+        }
+        .stairs:hover {
+            background: url("../../maps/mirage/stairs_2.jpg") no-repeat;
+        }
+        
+
+        .b_retake_default {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/b_retake_default.jpg") no-repeat;
+            display: inline-block;
+        }
+        .b_retake_default:hover {
+            background: url("../../maps/mirage/b_retake_default_2.jpg") no-repeat;
+        }
+        
+
+        .mid_window {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/mid_window.jpg") no-repeat;
+            display: inline-block;
+        }
+        .mid_window:hover {
+            background: url("../../maps/mirage/mid_window_2.jpg") no-repeat;
+        }
+        
+
+        .stairs {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/stairs.jpg") no-repeat;
+            display: inline-block;
+        }
+        .stairs:hover {
+            background: url("../../maps/mirage/stairs_2.jpg") no-repeat;
+        }
+        
+
+        .b_retake_default {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/b_retake_default.jpg") no-repeat;
+            display: inline-block;
+        }
+        .b_retake_default:hover {
+            background: url("../../maps/mirage/b_retake_default_2.jpg") no-repeat;
+        }
+        
+
+        .mid_short {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/mid_short.jpg") no-repeat;
+            display: inline-block;
+        }
+        .mid_short:hover {
+            background: url("../../maps/mirage/mid_short_2.jpg") no-repeat;
+        }
+        
+
+        .right_arch {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/right_arch.jpg") no-repeat;
+            display: inline-block;
+        }
+        .right_arch:hover {
+            background: url("../../maps/mirage/right_arch_2.jpg") no-repeat;
+        }
+        
+
+        .left_arch {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/left_arch.jpg") no-repeat;
+            display: inline-block;
+        }
+        .left_arch:hover {
+            background: url("../../maps/mirage/left_arch_2.jpg") no-repeat;
+        }
+        
+
+        .right_arch {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/right_arch.jpg") no-repeat;
+            display: inline-block;
+        }
+        .right_arch:hover {
+            background: url("../../maps/mirage/right_arch_2.jpg") no-repeat;
+        }
+        
+
+        .a_retake_ramp {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/a_retake_ramp.jpg") no-repeat;
+            display: inline-block;
+        }
+        .a_retake_ramp:hover {
+            background: url("../../maps/mirage/a_retake_ramp_2.jpg") no-repeat;
+        }
+        
+
+        .CT {
+            width: 1280px;
+            height: 960px;
+            background: url("../../maps/mirage/CT.jpg") no-repeat;
+            display: inline-block;
+        }
+        .CT:hover {
+            background: url("../../maps/mirage/CT_2.jpg") no-repeat;
+        }
+</style>
+<script>
+    function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+</head>
+<body>
+    <ul>
+        <li>CT_Tetris</li>
+        <li>B_window</li>
+        <li>b_retake_bench</li>
+        <li>CT_ramp</li>
+        <li>T_window</li>
+        <li>bench</li>
+        <li>shadow_palace</li>
+        <li>a_retake_palace</li>
+        <li>b_retake_short</li>
+        <li>stairs_low</li>
+        <li>a_retake_ramp</li>
+        <li>T_short</li>
+        <li>jungle</li>
+        <li>mid_window</li>
+        <li>door</li>
+        <li>mid_short</li>
+        <li>stairs</li>
+        <li>b_retake_default</li>
+        <li>left_arch</li>
+        <li>right_arch</li>
+        <li>CT</li>
+    </ul>
+        
+    <h1>CT_Tetris</h1>
+    <div class="CT_Tetris"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+
+    <h1>B_window</h1>
+    <div class="B_window"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+
+    <h1>b_retake_bench</h1>
+    <div class="b_retake_bench"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+       
+
+    <h1>CT_ramp</h1>
+    <div class="CT_ramp"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+        
+
+    <h1>T_window</h1>
+    <div class="T_window"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+   
+
+    <h1>bench</h1>
+    <div class="bench"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+
+    <h1>shadow_palace</h1>
+    <div class="shadow_palace"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+       
+
+    <h1>a_retake_palace</h1>
+    <div class="a_retake_palace"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+
+    <h1>b_retake_short</h1>
+    <div class="b_retake_short"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+
+    <h1>stairs_low</h1>
+    <div class="stairs_low"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+    <h1>a_retake_ramp</h1>
+    <div class="a_retake_ramp"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+
+    <h1>T_short</h1>
+    <div class="T_short"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+
+    <h1>jungle</h1>
+    <div class="jungle"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+
+    <h1>mid_window</h1>
+    <div class="mid_window"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+      
+
+    <h1>door</h1>
+    <div class="door"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+    
+
+    <h1>mid_short</h1>
+    <div class="mid_short"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+        
+    
+
+    <h1>stairs</h1>
+    <div class="stairs"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+
+    <h1>b_retake_default</h1>
+    <div class="b_retake_default"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+        
+
+    <h1>left_arch</h1>
+    <div class="left_arch"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+    
+
+    <h1>right_arch</h1>
+    <div class="right_arch"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+       
+
+    <h1>CT</h1>
+    <div class="CT"></div>
+    <br>
+    <button type="button" onclick="topFunction()">Top</button>
+    <br>
+</body>
+</html>
