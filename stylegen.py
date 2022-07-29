@@ -41,6 +41,7 @@ def scrollList(list):
     print("</ul>")
 def main():
     files = os.listdir("/Users/krois/Source/smokes/maps/mirage")
+    ##husk at skifte "maps/MAPNAVN" i background
     #stylespaste(files)
     #body(files)
     scrollList(files)
