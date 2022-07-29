@@ -45,7 +45,7 @@ const readMapFiles = async() => {
 const start = async() => {
     const map_manifest = await readMapFiles();
     await writeManifestFile(map_manifest);
-    console.log("Built manifest of map files", map_manifest);
+    console.log("Built manifest of map files", Object(map_manifest).length);
 }
 
 start();
