@@ -42,15 +42,15 @@
                 <img
                     class="aim-image"
                     src={`/maps/${map}/${set.aimImage}`}
-                    width="1280px"
-                    height="960px"
+                    width="640px"
+                    height="480px"
                     alt="aim"
                 >
                 <img
                     class="position-image mx-auto"
                     src={`/maps/${map}/${set.positionImage}`}
-                    width="1280px"
-                    height="960px"
+                    width="640px"
+                    height="480px"
                     alt="position"
                 >
             </div>
@@ -76,8 +76,8 @@
 
     .position-relative {
         position: relative;
-        height: calc(960px + 4rem);
-        width: 1280px;
+        height: calc(480px + 4rem);
+        width: 640px;
     }
 </style>
   
