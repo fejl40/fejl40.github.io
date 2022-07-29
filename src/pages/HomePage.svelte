@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { presentableName } from "../util/presentableName";
     import manifest_json from "../map-manifest.json"
     let mapNames = Object.keys(manifest_json);
     
@@ -13,7 +14,7 @@
     }
 </script>
 
-<div class="grid grid-flow-col grid-rows-3 lg:grid-rows-2 container px-1 mx-auto mt-24">
+<div class="grid grid-flow-col grid-rows-6 lg:grid-rows-3 2xl:grid-rows-2 container px-1 mx-auto mt-24">
     {#each mapNames as map}
         <div 
             style={`background-image: url("/backgrounds/${mapBackgroundImages[map]}");`}
@@ -21,7 +22,11 @@
             class="map-button-size mx-auto rounded-xl shadow-inner hover:opacity-50 mt-1"
         >
             <a href={`/?map=${map}`}>
-                <div class="w-full h-full"></div>
+                <div class="w-full h-full relative">
+                    <div class="absolute w-full h-6 bottom-8 bg-gray-600">
+                        <p class="text-white font-bold text-center">{presentableName(map)}</p>
+                    </div>
+                </div>
             </a>
         </div>
     {/each}

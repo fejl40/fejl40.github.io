@@ -1,10 +1,11 @@
 <script lang="ts">
+    import { presentableName } from "../util/presentableName";
     import manifest_json from "../map-manifest.json"
     export let map: string;
     let mapName: string = map;
     $: mapName = map.toLowerCase().trim();
 
-    const presentableMapName = mapName[0].toUpperCase()+mapName.substring(1).toLowerCase();
+    const presentableMapName = presentableName(mapName);
     const mapImages: string[] = manifest_json[mapName];
     const mapImageSets: {positionImage: string, aimImage: string}[] = [];
 
