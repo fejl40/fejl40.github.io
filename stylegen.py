@@ -10,11 +10,11 @@ def stylespaste(list):
         .{filename} {forwardBracket}
             width: 1280px;
             height: 960px;
-            background: url("../../maps/mirage/{filename}.jpg") no-repeat;
+            background: url("../maps/dust2/{filename}.jpg") no-repeat;
             display: inline-block;
         {BackBracket}
         .{filename}:hover {forwardBracket}
-            background: url("../../maps/mirage/{filename}_2.jpg") no-repeat;
+            background: url("../../maps/dust2/{filename}_2.jpg") no-repeat;
         {BackBracket}
         """.format(BackBracket= "}", forwardBracket = "{", filename=stripped)
         print(x)
@@ -40,18 +40,11 @@ def scrollList(list):
         print(x)
     print("</ul>")
 def main():
-    files = os.listdir("/Users/krois/Source/smokes/maps/mirage")
+    files = os.listdir("/Users/krois/Downloads/dust2")
     ##husk at skifte "maps/MAPNAVN" i background
-    #stylespaste(files)
+    stylespaste(files)
     #body(files)
-    scrollList(files)
+    #scrollList(files)
 
 if __name__ == "__main__":
     main()
-
-
-
-######
-# !!!important!!!
-# der er en eller anden fejl hvor den nogle gange smider _2 med det fucker med både body & style har ikke tid til at fix
-#####
