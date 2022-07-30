@@ -10,6 +10,7 @@
 </script>
 
 <main>
+	<p>{JSON.stringify(query)}</p>
 	{#if !!query.map}
 		<MapPage map={query.map} />
 	{:else}
