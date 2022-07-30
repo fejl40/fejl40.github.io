@@ -1,7 +1,7 @@
 <script lang="ts">
     import { presentableName } from "../util/presentableName";
     import manifest_json from "../map-manifest.json"
-    let mapNames = Object.keys(manifest_json);
+    let mapNames = Object.keys(manifest_json).sort();
     
     let mapBackgroundImages: {[mapName:string]: string} = {};
     for (let i = 0; i < mapNames.length; i++) {
