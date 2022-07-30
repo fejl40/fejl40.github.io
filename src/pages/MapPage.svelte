@@ -32,7 +32,6 @@
     }
 
     const changedFilter = () => {
-        console.log("changed");
         filterSmokes();
     }
 
@@ -50,7 +49,6 @@
         const elm = document.getElementById(id);
         if (!elm) return;
         elm.scrollIntoView();
-        console.log("view");
     }
 
     filterSmokes();
