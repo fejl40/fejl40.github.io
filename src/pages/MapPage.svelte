@@ -5,20 +5,35 @@
     let mapName: string = map;
     $: mapName = map.toLowerCase().trim();
 
+    let ct: boolean = true;
+    let t: boolean = true;
+
     const presentableMapName = presentableName(mapName);
     const mapImages: string[] = manifest_json[mapName];
-    const mapImageSets: {positionImage: string, aimImage: string}[] = [];
+    let mapImageSets: {positionImage: string, aimImage: string}[] = [];
 
-    for (let i = 0; i < mapImages.length; i++) {
-        const img: string = mapImages[i];
-        const imgTest = img.substring(0, img.lastIndexOf("."));
-        if (imgTest[imgTest.length-1] === "2") continue;
-        const aimImg = `${imgTest}_2${img.substring(img.lastIndexOf("."))}`;
-        const obj: {positionImage: string, aimImage: string} = {
-            positionImage: img.trim(),
-            aimImage: aimImg.trim()
-        };
-        mapImageSets.push(obj);
+    const filterSmokes = () => {
+        mapImageSets = [];
+        for (let i = 0; i < mapImages.length; i++) {
+            const img: string = mapImages[i];
+            const imgTest = img.substring(0, img.lastIndexOf("."));
+            if (imgTest[imgTest.length-1] === "2") continue;
+            const aimImg = `${imgTest}_2${img.substring(img.lastIndexOf("."))}`;
+            const obj: {positionImage: string, aimImage: string} = {
+                positionImage: img.trim(),
+                aimImage: aimImg.trim()
+            };
+            mapImageSets.push(obj);
+        }
+        if (!(t && ct)) {
+            if (ct) mapImageSets = mapImageSets.filter((set) => set.positionImage.substring(0,2).toUpperCase() === "CT");
+            if (t) mapImageSets = mapImageSets.filter((set) => set.positionImage.substring(0,1).toUpperCase() === "T");
+        }
+    }
+
+    const changedFilter = () => {
+        console.log("changed");
+        filterSmokes();
     }
 
     const presentableGrenadeName = (name: string) => {
@@ -37,6 +52,8 @@
         elm.scrollIntoView();
         console.log("view");
     }
+
+    filterSmokes();
 </script>
 
 <div class="relative">
@@ -45,11 +62,35 @@
     <br />
     <br />
 
-    <div class="fixed w-48">
+    <div class="fixed w-48 top-0">
         <div class="relative w-full">
-            <div class="absolute z-10 bg-gray-500 rounded-r-md transition-opacity opacity-40 hover:opacity-100">
+            <div class="absolute z-10 bg-gray-500 rounded-br-md transition-opacity opacity-40 hover:opacity-100">
                 <div class="p-1">
                     <h3>Overview</h3>
+                </div>
+
+                <hr />
+
+                <div class="p-1">
+                    <input
+                        type="checkbox"
+                        name="terrorist-filter"
+                        id="terrorist-filter-checkbox"
+                        bind:checked={t}
+                        on:change={changedFilter}
+                    />
+                    <label for="terrorist-filter-checkbox">T</label>
+
+                    <br />
+
+                    <input
+                        type="checkbox"
+                        name="counter-terrorist-filter"
+                        id="counter-terrorist-filter-checkbox"
+                        bind:checked={ct}
+                        on:change={changedFilter}
+                    />
+                    <label for="counter-terrorist-filter-checkbox">CT</label>
                 </div>
         
                 <hr />
