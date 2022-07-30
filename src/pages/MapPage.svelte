@@ -15,17 +15,14 @@
         if (imgTest[imgTest.length-1] === "2") continue;
         const aimImg = `${imgTest}_2${img.substring(img.lastIndexOf("."))}`;
         const obj: {positionImage: string, aimImage: string} = {
-            positionImage: img,
-            aimImage: aimImg
+            positionImage: img.trim(),
+            aimImage: aimImg.trim()
         };
         mapImageSets.push(obj);
     }
 
     const presentableGrenadeName = (name: string) => {
-        let str = name
-            .substring(0, name.lastIndexOf("."))
-            .replaceAll("_", " ")
-            .trim();
+        let str = name.substring(0, name.lastIndexOf(".")).replace(/_+/g, " ");
         return str;
     }
 </script>
@@ -37,7 +34,7 @@
     <br />
 
     {#each mapImageSets as set}
-        <article>
+        <div>
             <div class="position-relative mx-auto">
                 <h3 class="text-xl">{presentableGrenadeName(set.positionImage)}</h3>
                 <img
@@ -46,16 +43,16 @@
                     width="640px"
                     height="480px"
                     alt="aim"
-                >
+                />
                 <img
                     class="position-image mx-auto"
                     src={`/maps/${map}/${set.positionImage}`}
                     width="640px"
                     height="480px"
                     alt="position"
-                >
+                />
             </div>
-        </article>
+        </div>
     {/each}
 </div>
 
