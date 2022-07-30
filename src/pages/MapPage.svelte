@@ -25,34 +25,64 @@
         let str = name.substring(0, name.lastIndexOf(".")).replace(/_+/g, " ");
         return str;
     }
+
+    // remove extension
+    const rmEx = (input: string) => {
+        return input.substring(0, input.lastIndexOf("."));
+    }
+
+    const scrollToId = (id:string) => {
+        const elm = document.getElementById(id);
+        if (!elm) return;
+        elm.scrollIntoView();
+        console.log("view");
+    }
 </script>
 
-<div>
+<div class="relative">
     <h2 class="text-center text-3xl">{presentableMapName} smokes</h2>
 
     <br />
     <br />
 
+    <div class="fixed w-48">
+        <div class="relative w-full">
+            <div class="absolute z-10 bg-gray-500 rounded-r-md transition-opacity opacity-40 hover:opacity-100">
+                <div class="p-1">
+                    <h3>Overview</h3>
+                </div>
+        
+                <hr />
+        
+                <div class="p-1">
+                    {#each mapImageSets as set}
+                        <button class="w-full hover:underline text-left" on:click={() => scrollToId(rmEx(set.positionImage))}>{presentableGrenadeName(set.positionImage)}</button>
+                    {/each}
+                </div>
+            </div>
+        </div>
+    </div>
+
     {#each mapImageSets as set}
-        <div>
-            <div class="position-relative mx-auto">
-                <h3 class="text-xl">{presentableGrenadeName(set.positionImage)}</h3>
+        <article id={rmEx(set.positionImage)}>
+            <div class="position-relative 2xl:ml-auto 2xl:mr-auto ml-auto mr-0">
+                <h4 class="text-xl">{presentableGrenadeName(set.positionImage)}</h4>
                 <img
-                    class="aim-image"
+                    class="aim-image z-0"
                     src={`/maps/${map}/${set.aimImage}`}
-                    width="640px"
-                    height="480px"
+                    width="960px"
+                    height="720px"
                     alt="aim"
                 />
                 <img
-                    class="position-image mx-auto"
+                    class="position-image z-0"
                     src={`/maps/${map}/${set.positionImage}`}
-                    width="640px"
-                    height="480px"
+                    width="960px"
+                    height="720px"
                     alt="position"
                 />
             </div>
-        </div>
+        </article>
     {/each}
 </div>
 
@@ -74,8 +104,8 @@
 
     .position-relative {
         position: relative;
-        height: calc(480px + 4rem);
-        width: 640px;
+        height: calc(720px + 4rem);
+        width: 960px;
     }
 </style>
   
