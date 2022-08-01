@@ -1,19 +1,29 @@
 <script lang="ts">
-	import HomePage from "./pages/HomePage.svelte"
-	import MapPage from "./pages/MapPage.svelte"
-	const queryList = !!document.location.search ? document.location.search.substring(1).split("&") : [];
-	const query: {[key:string]: string} = {};
-	
-	for (let i = 0; i < queryList.length; i++) {
-		const elm = queryList[i].split("=");
-		query[elm[0]] = elm[1];
-	}
+	import store, { type StoreModel, Page } from "./store";
+	import { Map } from "./types/grenadeTypes";
+	import { parsedParameters } from "./util/parsedParameters";
+	import HomePage from "./pages/HomePage.svelte";
+	import MapPage from "./pages/MapPage.svelte";
+	let storeValue: StoreModel;
+	store.subscribe((value) => storeValue = value);
+
+	store.update((value) => {
+		const query = parsedParameters();
+		const map = query["map"];
+		if (!!map) {
+			const validMap = Object.values(Map).includes(map as Map);
+			if (validMap) return { ...value, map: map as Map, page: Page.Map };
+		}
+		return { ...value }
+	});
 </script>
 
 <main>
-	{#if !!query.map}
-		<MapPage map={query.map} />
-	{:else}
+	{#if storeValue.page === Page.Home}
 		<HomePage />
+	{/if}
+
+	{#if storeValue.page === Page.Map}
+		<MapPage map={storeValue.map} />
 	{/if}
 </main>

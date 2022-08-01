@@ -1,12 +1,19 @@
 <script lang="ts">
-    import { presentableName } from "../util/presentableName";
-    import manifest_json from "../map-manifest.json"
-    export let map: string;
-    let mapName: string = map;
-    $: mapName = map.toLowerCase().trim();
+    import store, { type StoreModel } from "../store";
+    import type { Map } from "../types/grenadeTypes";
+    import { screenName } from "../util/mapNameMap";
+    export let map: Map;
+
+    let mapName: string = screenName(map);
+    $: mapName = screenName(map);
 
     let ct: boolean = true;
     let t: boolean = true;
+
+    let storeValue: StoreModel;
+	store.subscribe((value) => {
+		storeValue = value;
+	});
 
     const presentableMapName = presentableName(mapName);
     const mapImages: string[] = manifest_json[mapName];
