@@ -22,7 +22,9 @@
         </div>
     {/each}
 </div>
-  
+  <div style="text-align:center">
+      <a href="https://faceitfinder.com/"> Check them on faceitfinder!</a>
+  </div>
 <style>
     .map-button-size {
         width: 504px;
