@@ -1,8 +1,14 @@
 import manifest from "../map-manifest.json";
-import type { CounterStrikeGrenadeMap, Smoke, Map } from "../types/grenadeTypes";
+import { type CounterStrikeGrenadeMap, type Smoke, type Map, GrenadeTeam } from "../types/grenadeTypes";
 
-const findPairs = (): {[map:string]: {id: string, pos?: string, aim?:string}[]} => {
-    const obj: {[map:string]: {id: string, pos?: string, aim?:string}[]} = {};
+interface PairWithId {
+    id: string;
+    pos?: string;
+    aim?:string;
+}
+
+const findPairs = (): {[map:string]: PairWithId[]} => {
+    const obj: {[map:string]: PairWithId[]} = {};
     Object.keys(manifest).forEach((map: string) => {
         obj[map] = [];
         manifest[map].forEach((img: string) => {
@@ -23,7 +29,7 @@ const findPairs = (): {[map:string]: {id: string, pos?: string, aim?:string}[]} 
     return obj;
 }
 
-const validatePairs = (pairs: {[map:string]: {id: string, pos?: string, aim?:string}[]}): boolean => {
+const validatePairs = (pairs: {[map:string]: PairWithId[]}): boolean => {
     let valid = true;
     const keys = Object.keys(pairs);
     for (let i = 0; i < keys.length; i++) {
@@ -40,8 +46,28 @@ const validatePairs = (pairs: {[map:string]: {id: string, pos?: string, aim?:str
     return valid;
 }
 
-const convertToCounterStrikeGrenadeMap = (input: {id: string, pos?: string, aim?:string}[], mapName: string): CounterStrikeGrenadeMap => {
-    const smokes: Smoke[] = [];
+const presentableGrenadeName = (input:string): string => {
+    const safe = input.substring(input.indexOf("_"), input.length).replace(/_+/g, " ");
+    return (safe[0].toUpperCase()+safe.substring(1).toLowerCase()).trim();
+}
+
+const convertToCounterStrikeGrenadeMap = (input: PairWithId[], mapName: string): CounterStrikeGrenadeMap => {
+    const smokes: Smoke[] = input.map((pair: PairWithId): Smoke => {
+        let team: GrenadeTeam = GrenadeTeam.None;
+        if (pair.id[0].toLowerCase() === "t" && pair.id[1].toLowerCase() === "_") team = GrenadeTeam.Terrorist;
+        if (pair.id[0].toLowerCase() === "c" && pair.id[1].toLowerCase() === "t") team = GrenadeTeam.CounterTerrorist;
+
+        const obj: Smoke = {
+            team,
+            name: presentableGrenadeName(pair.id),
+            posImage: `/maps/${mapName}/${pair.pos}`,
+            aimImage: `/maps/${mapName}/${pair.aim}`,
+            throwGuide: [],
+            favorite: false
+        }
+        return obj;
+    });
+    
     const flashbangs: Smoke[] = [];
     const molotovs: Smoke[] = [];
     const frags: Smoke[] = [];
@@ -57,19 +83,9 @@ const convertToCounterStrikeGrenadeMap = (input: {id: string, pos?: string, aim?
     return map;
 }
 
-const convertToCounterStrikeGrenadeMapList = (pairs: {[map:string]: {id: string, pos?: string, aim?:string}[]}): CounterStrikeGrenadeMap[] => {
-    const list: CounterStrikeGrenadeMap[] = [];
-    const keys = Object.keys(pairs);
-    for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        list.push(convertToCounterStrikeGrenadeMap(pairs[key], key));
-    }
-    return list;
-}
-
 export const createNadeMap = (): CounterStrikeGrenadeMap[] => {
     const pairs = findPairs();
     const valid = validatePairs(pairs); // will do a console error if there are incomplete pairs
     if (!valid) throw new Error("There are incomplete map image pairs!");
-    return convertToCounterStrikeGrenadeMapList(pairs);
+    return Object.keys(pairs).map((key) => convertToCounterStrikeGrenadeMap(pairs[key], key)); // convert object with map keys to array with CounterStrikeGrenadeMaps
 }
