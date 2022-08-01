@@ -1,6 +1,6 @@
 <script lang="ts">
 	import store, { type StoreModel, Page } from "./store";
-	import { Map } from "./types/grenadeTypes";
+	import { CsgoMap } from "./types/grenadeTypes";
 	import { parsedParameters } from "./util/parsedParameters";
 	import HomePage from "./pages/HomePage.svelte";
 	import MapPage from "./pages/MapPage.svelte";
@@ -11,8 +11,8 @@
 		const query = parsedParameters();
 		const map = query["map"];
 		if (!!map) {
-			const validMap = Object.values(Map).includes(map as Map);
-			if (validMap) return { ...value, map: map as Map, page: Page.Map };
+			const validMap = Object.values(CsgoMap).includes(map as CsgoMap);
+			if (validMap) return { ...value, map: map as CsgoMap, page: Page.Map };
 		}
 		return { ...value }
 	});
@@ -20,7 +20,7 @@
 
 <main>
 	{#if storeValue.page === Page.Home}
-		<HomePage />
+		<HomePage mapImages={storeValue.backgroundImages} />
 	{/if}
 
 	{#if storeValue.page === Page.Map}

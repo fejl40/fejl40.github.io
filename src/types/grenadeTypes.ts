@@ -1,4 +1,4 @@
-export enum Map {
+export enum CsgoMap {
     Ancient = "ancient",
     Inferno = "inferno",
     Nuke = "nuke",
@@ -54,7 +54,7 @@ export interface Frag extends BaseGrenade {
 }
 
 export interface CounterStrikeGrenadeMap {
-    map: Map;
+    map: CsgoMap;
     smokes: Smoke[];
     flashbangs: Flash[];
     molotovs: Molotov[];

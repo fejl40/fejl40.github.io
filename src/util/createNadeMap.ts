@@ -1,5 +1,5 @@
 import manifest from "../map-manifest.json";
-import { type CounterStrikeGrenadeMap, type Smoke, type Map, GrenadeTeam } from "../types/grenadeTypes";
+import { type CounterStrikeGrenadeMap, type Smoke, type CsgoMap, GrenadeTeam } from "../types/grenadeTypes";
 
 interface PairWithId {
     id: string;
@@ -73,7 +73,7 @@ const convertToCounterStrikeGrenadeMap = (input: PairWithId[], mapName: string):
     const frags: Smoke[] = [];
     
     const map: CounterStrikeGrenadeMap = {
-        map: mapName as Map,
+        map: mapName as CsgoMap,
         smokes,
         flashbangs,
         molotovs,

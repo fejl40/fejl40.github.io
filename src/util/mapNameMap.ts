@@ -1,14 +1,14 @@
-import { Map } from "../types/grenadeTypes";
+import { CsgoMap } from "../types/grenadeTypes";
 
 const mapNameMap: {[map: string]: string} = {};
-mapNameMap[typeof Map.Ancient] = "Ancient";
-mapNameMap[typeof Map.Inferno] = "Inferno";
-mapNameMap[typeof Map.Nuke] = "Nuke";
-mapNameMap[typeof Map.Dust2] = "Dust2";
-mapNameMap[typeof Map.Mirage] = "Mirage";
-mapNameMap[typeof Map.Vertigo] = "Vertigo";
-mapNameMap[typeof Map.Overpass] = "Overpass";
+mapNameMap[typeof CsgoMap.Ancient] = "Ancient";
+mapNameMap[typeof CsgoMap.Inferno] = "Inferno";
+mapNameMap[typeof CsgoMap.Nuke] = "Nuke";
+mapNameMap[typeof CsgoMap.Dust2] = "Dust2";
+mapNameMap[typeof CsgoMap.Mirage] = "Mirage";
+mapNameMap[typeof CsgoMap.Vertigo] = "Vertigo";
+mapNameMap[typeof CsgoMap.Overpass] = "Overpass";
 
-export const screenName = (map: Map): string => mapNameMap[typeof map];
+export const screenName = (map: CsgoMap): string => mapNameMap[typeof map];
 
 export default mapNameMap;
