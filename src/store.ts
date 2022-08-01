@@ -1,5 +1,4 @@
 import { writable } from "svelte/store";
-import manifest from "./map-manifest.json";
 import type { CounterStrikeGrenadeMap, CsgoMap } from "./types/grenadeTypes";
 import { backgroundImages } from "./util/backgroundImages";
 import { createNadeMap } from "./util/createNadeMap";
@@ -18,7 +17,7 @@ export interface StoreModel {
 
 export const initialStore: StoreModel = {
     page: Page.Home,
-    backgroundImages: backgroundImages(Object.keys(manifest)),
+    backgroundImages: backgroundImages(),
     nadeMap: createNadeMap()
 }
 
