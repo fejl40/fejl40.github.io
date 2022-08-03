@@ -1,6 +1,6 @@
 <script lang="ts">
     import store, { type StoreModel } from "../store";
-    import type { CounterStrikeGrenadeMap, CsgoMap, Smoke } from "../types/grenadeTypes";
+    import { GrenadeTeam, type CounterStrikeGrenadeMap, type CsgoMap, type Smoke } from "../types/grenadeTypes";
     import { screenName } from "../util/mapNameMap";
 
     import SmokeComponent from "../lib/Smoke.svelte";
@@ -18,15 +18,18 @@
     let t: boolean = false;
     let ct: boolean = false;
 
-    const filterDispatch = (input) => {
+    const filterDispatch = (input: CustomEvent<any>) => {
         t = input.detail.t as boolean;
-        ct = input.detail.t as boolean;
+        ct = input.detail.ct as boolean;
         smokes = refreshFilter(grenadeMap.smokes);
-        console.log("refresh", smokes);
     }
 
     const refreshFilter = (smokes: Smoke[]): Smoke[] => {
-        return [...smokes];
+        return smokes.filter((s) => {
+            if (t && s.team === GrenadeTeam.Terrorist) return true;
+            if (ct && s.team === GrenadeTeam.CounterTerrorist) return true;
+            return false;
+        });
     }
 
 	store.subscribe((value) =>  {

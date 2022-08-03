@@ -13,10 +13,9 @@
 
     const filterChanged = () => {
         console.log("change");
-        dispatch("filter", {
-            t,
-            ct
-        });
+        const value = { t, ct };
+        dispatch("filter", value);
+        setTimeout(() => scrollEventFunction(), 0);
     }
 
     const scrollToNade = (nade: BaseGrenade) => {
@@ -74,7 +73,7 @@
 
     <div class="overview-grid">
         <div class="relative">
-            <div class="absolute w-full h-4 bg-white smooth-movement" style={`top: ${markerPos(fraction, listHeight)}px;`}></div>
+            <div class={`absolute w-full h-4 bg-white smooth-movement ${!grenades?.length ? "opacity-0" : "opacity-100"}`} style={`top: ${markerPos(fraction, listHeight)}px;`}></div>
         </div>
         
         <ol id="overview-list">
