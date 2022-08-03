@@ -55,7 +55,7 @@ const convertToCounterStrikeGrenadeMap = (input: PairWithId[], mapName: string):
     const smokes: Smoke[] = input.map((pair: PairWithId): Smoke => {
         let team: GrenadeTeam = GrenadeTeam.None;
         if (pair.id[0].toLowerCase() === "t" && pair.id[1].toLowerCase() === "_") team = GrenadeTeam.Terrorist;
-        if (pair.id[0].toLowerCase() === "c" && pair.id[1].toLowerCase() === "t") team = GrenadeTeam.CounterTerrorist;
+        else if (pair.id[0].toLowerCase() === "c" && pair.id[1].toLowerCase() === "t") team = GrenadeTeam.CounterTerrorist;
 
         const obj: Smoke = {
             team,
@@ -87,5 +87,7 @@ export const createNadeMap = (): CounterStrikeGrenadeMap[] => {
     const pairs = findPairs();
     const valid = validatePairs(pairs); // will do a console error if there are incomplete pairs
     if (!valid) throw new Error("There are incomplete map image pairs!");
-    return Object.keys(pairs).map((key) => convertToCounterStrikeGrenadeMap(pairs[key], key)); // convert object with map keys to array with CounterStrikeGrenadeMaps
+    
+    // convert object with map keys to array with CounterStrikeGrenadeMaps
+    return Object.keys(pairs).map((key) => convertToCounterStrikeGrenadeMap(pairs[key], key));
 }
