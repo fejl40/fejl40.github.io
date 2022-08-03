@@ -55,7 +55,7 @@ const convertToCounterStrikeGrenadeMap = (input: PairWithId[], mapName: string):
     const smokes: Smoke[] = input.map((pair: PairWithId): Smoke => {
         let team: GrenadeTeam = GrenadeTeam.None;
         if (pair.id[0].toLowerCase() === "t" && pair.id[1].toLowerCase() === "_") team = GrenadeTeam.Terrorist;
-        if (pair.id[0].toLowerCase() === "c" && pair.id[1].toLowerCase() === "t") team = GrenadeTeam.CounterTerrorist;
+        else if (pair.id[0].toLowerCase() === "c" && pair.id[1].toLowerCase() === "t") team = GrenadeTeam.CounterTerrorist;
 
         const obj: Smoke = {
             team,

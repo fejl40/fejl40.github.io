@@ -1,9 +1,9 @@
 <script lang="ts">
     import store, { type StoreModel } from "../store";
-    import type { CounterStrikeGrenadeMap, CsgoMap } from "../types/grenadeTypes";
+    import type { CounterStrikeGrenadeMap, CsgoMap, Smoke } from "../types/grenadeTypes";
     import { screenName } from "../util/mapNameMap";
 
-    import Smoke from "../lib/Smoke.svelte";
+    import SmokeComponent from "../lib/Smoke.svelte";
     import Overview from "../lib/Overview.svelte";
 
 
@@ -11,11 +11,28 @@
     let storeValue: StoreModel;
     let mapName: string = screenName(map);
     let grenadeMap: CounterStrikeGrenadeMap;
+    let smokes: Smoke[] = [];
     $: mapName = screenName(map);
+    
+
+    let t: boolean = false;
+    let ct: boolean = false;
+
+    const filterDispatch = (input) => {
+        t = input.detail.t as boolean;
+        ct = input.detail.t as boolean;
+        smokes = refreshFilter(grenadeMap.smokes);
+        console.log("refresh", smokes);
+    }
+
+    const refreshFilter = (smokes: Smoke[]): Smoke[] => {
+        return [...smokes];
+    }
 
 	store.subscribe((value) =>  {
-        storeValue = value
+        storeValue = value;
         grenadeMap = storeValue.nadeMap.find(m => m.map === map);
+        smokes = refreshFilter(grenadeMap.smokes);
     });
 </script>
 
@@ -25,7 +42,7 @@
             <div class="relative w-full h-full">
                 <h2 class="text-2xl">Overview</h2>
                 <br />
-                <Overview grenades={grenadeMap.smokes}/>
+                <Overview grenades={smokes} on:filter={(data) => filterDispatch(data)}/>
             </div>
         </div>
     </div>
@@ -37,8 +54,8 @@
             {#if !!grenadeMap}
                 <div id="top-grenade"></div>
                 <ol class="space-y-10">
-                    {#each grenadeMap.smokes as smoke}
-                        <li><Smoke smoke={smoke} /></li>
+                    {#each smokes as smoke}
+                        <li><SmokeComponent smoke={smoke} /></li>
                     {/each}
                 </ol>
                 <div id="bottom-grenade"></div>

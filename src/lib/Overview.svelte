@@ -1,11 +1,23 @@
 <script lang="ts">
-    import { onDestroy, onMount } from "svelte";
+    import { onDestroy, onMount, createEventDispatcher } from "svelte";
     import type { BaseGrenade } from "../types/grenadeTypes";
     export let grenades: BaseGrenade[]
+    const dispatch = createEventDispatcher();
+
+    let t: boolean = false;
+    let ct: boolean = false;
 
     let fraction = 0;
     let listHeight = 0;
     let ol: HTMLOListElement;
+
+    const filterChanged = () => {
+        console.log("change");
+        dispatch("filter", {
+            t,
+            ct
+        });
+    }
 
     const scrollToNade = (nade: BaseGrenade) => {
         document.getElementById(nade.name.replace(" ", "-")).scrollIntoView({
@@ -17,11 +29,11 @@
         const grenadeIdx = (grenades.length-1);
         const grenadeHeight = height/grenadeIdx;
         const rounded = Math.floor(frac*grenadeIdx)*grenadeHeight+6*(1-frac)-2
-        return Math.max(0, Math.min(rounded, height))
+        return Math.max(0, Math.min(rounded, height));
     }
 
     const scrollEventFunction = () => {
-        const currentScroll = (document.documentElement.scrollTop || document.body.scrollTop);
+        const currentScroll = (document.documentElement.scrollTop || document.body.scrollTop) + fraction*518*1.4;
         const scrHeight = screen.height*0.5;
         const totalScroll = (document.documentElement.scrollHeight || document.body.scrollHeight) - scrHeight;
         const scrollPos = currentScroll/totalScroll;
@@ -44,21 +56,39 @@
     });
 </script>
 
-<div class="overview-grid">
-    <div class="relative">
-        <div class="absolute w-full h-4 bg-white smooth-movement" style={`top: ${markerPos(fraction, listHeight)}px;`}></div>
+<div>
+    <h4>Filter not implemented</h4>
+
+    <input type="checkbox" id="t" bind:checked={t} on:change={filterChanged} />
+    <label for="t">Terrorist</label>
+
+    <br />
+
+    <input type="checkbox" id="ct" bind:checked={ct} on:change={filterChanged} />
+    <label for="ct">CounterTerrorist</label>
+    
+    <br />
+    <br />
+    <hr />
+    <br />
+
+    <div class="overview-grid">
+        <div class="relative">
+            <div class="absolute w-full h-4 bg-white smooth-movement" style={`top: ${markerPos(fraction, listHeight)}px;`}></div>
+        </div>
+        
+        <ol id="overview-list">
+            {#each grenades as nade}
+                <li>
+                    <button 
+                        class="w-full text-left ml-0.5 hover:underline"
+                        on:click={() => scrollToNade(nade)}>
+                        {nade.name}
+                    </button>
+                </li>
+            {/each}
+        </ol>
     </div>
-    <ol id="overview-list">
-        {#each grenades as nade}
-            <li>
-                <button 
-                    class="w-full text-left ml-0.5 hover:underline"
-                    on:click={() => scrollToNade(nade)}>
-                    {nade.name}
-                </button>
-            </li>
-        {/each}
-    </ol>
 </div>
 
 <style>
