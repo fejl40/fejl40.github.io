@@ -1,5 +1,8 @@
 name: Build and Deploy
-on: [push]
+on:
+  push:
+    branches:
+      - "release"
 permissions:
   contents: write
 jobs:
@@ -16,7 +19,6 @@ jobs:
           npm run build
 
       - name: Deploy 🚀
-        if: github.ref == 'refs/heads/release'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
