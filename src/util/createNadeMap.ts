@@ -87,5 +87,7 @@ export const createNadeMap = (): CounterStrikeGrenadeMap[] => {
     const pairs = findPairs();
     const valid = validatePairs(pairs); // will do a console error if there are incomplete pairs
     if (!valid) throw new Error("There are incomplete map image pairs!");
-    return Object.keys(pairs).map((key) => convertToCounterStrikeGrenadeMap(pairs[key], key)); // convert object with map keys to array with CounterStrikeGrenadeMaps
+    
+    // convert object with map keys to array with CounterStrikeGrenadeMaps
+    return Object.keys(pairs).map((key) => convertToCounterStrikeGrenadeMap(pairs[key], key));
 }

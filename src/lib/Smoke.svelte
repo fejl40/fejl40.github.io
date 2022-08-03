@@ -3,7 +3,7 @@
     export let smoke: Smoke;
 </script>
 
-<div>
+<div id={smoke.name.replace(" ", "-")}>
     <h2 class="text-xl">{smoke.name}</h2>
     <div class="image-size relative rounded-lg">
         <img 

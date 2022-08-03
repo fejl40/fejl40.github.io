@@ -2,7 +2,11 @@
     import store, { type StoreModel } from "../store";
     import type { CounterStrikeGrenadeMap, CsgoMap } from "../types/grenadeTypes";
     import { screenName } from "../util/mapNameMap";
+
     import Smoke from "../lib/Smoke.svelte";
+    import Overview from "../lib/Overview.svelte";
+
+
     export let map: CsgoMap;
     let storeValue: StoreModel;
     let mapName: string = screenName(map);
@@ -17,12 +21,11 @@
 
 <div class="map-page-grid">
     <div>
-        <div class="fixed w-48 h-screen py-2">
+        <div class="fixed w-48 h-screen py-2 px-1">
             <div class="relative w-full h-full">
                 <h2 class="text-2xl">Overview</h2>
                 <br />
-
-                <p>aaa</p>
+                <Overview grenades={grenadeMap.smokes}/>
             </div>
         </div>
     </div>

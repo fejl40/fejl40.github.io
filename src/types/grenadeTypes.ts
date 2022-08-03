@@ -27,7 +27,7 @@ export enum Movement {
     JumpThrow
 }
 
-interface BaseGrenade {
+export interface BaseGrenade {
     team: GrenadeTeam;
     name: string;
     posImage: string;
