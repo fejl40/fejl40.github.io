@@ -66,7 +66,7 @@ const convertToCounterStrikeGrenadeMap = (input: PairWithId[], mapName: string):
             favorite: false
         }
         return obj;
-    });
+    }).sort((a, b) => a.name.localeCompare(b.name));
     
     const flashbangs: Smoke[] = [];
     const molotovs: Smoke[] = [];
