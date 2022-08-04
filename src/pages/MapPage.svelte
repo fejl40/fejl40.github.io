@@ -15,7 +15,7 @@
     $: mapName = screenName(map);
     
 
-    let t: boolean = false;
+    let t: boolean = true;
     let ct: boolean = false;
 
     const filterDispatch = (input: CustomEvent<any>) => {

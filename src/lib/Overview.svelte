@@ -4,7 +4,7 @@
     export let grenades: BaseGrenade[]
     const dispatch = createEventDispatcher();
 
-    let t: boolean = false;
+    let t: boolean = true;
     let ct: boolean = false;
 
     let fraction = 0;
@@ -56,8 +56,6 @@
 </script>
 
 <div>
-    <h4>Filter not implemented</h4>
-
     <input type="checkbox" id="t" bind:checked={t} on:change={filterChanged} />
     <label for="t">Terrorist</label>
 
