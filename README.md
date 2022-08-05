@@ -1,3 +1,6 @@
+# Wiki
+Check out the [Wiki](https://github.com/fejl40/fejl40.github.io/wiki)
+
 # Svelte + TS + Vite
 
 This template should help get you started developing with Svelte and TypeScript in Vite.
