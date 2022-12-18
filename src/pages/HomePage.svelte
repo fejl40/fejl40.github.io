@@ -4,7 +4,9 @@
     let mapNames = Object.keys(mapImages).map(k => mapImages[k].split(".")[0]);
     $: mapNames = Object.keys(mapImages).map(k => mapImages[k].split(".")[0]); // make sure to do it again if data changes
 </script>
-
+  <div style="text-align:center">
+      <a href="https://faceitfinder.com/"> Check them on faceitfinder!</a>
+  </div>
 <div class="grid grid-flow-col grid-rows-6 lg:grid-rows-3 2xl:grid-rows-2 container px-1 mx-auto mt-24">
     {#each mapNames as map}
         <div 
@@ -22,9 +24,6 @@
         </div>
     {/each}
 </div>
-  <div style="text-align:center">
-      <a href="https://faceitfinder.com/"> Check them on faceitfinder!</a>
-  </div>
 <style>
     .map-button-size {
         width: 504px;
